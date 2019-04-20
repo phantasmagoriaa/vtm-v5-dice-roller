@@ -55,10 +55,6 @@ if (hungerDice > 0) {
 console.log(`Normal results: ${normalResults}`);
 console.log(`Hunger results: ${hungerResults}`);
 
-const normalSuccesses = normalResults.filter(number => {
-    return number >= 6 && number < 10;
-});
-
 const normalSuccesses = filterSuccesses(normalResults);
 
 const normalTens = filterTens(normalResults);
