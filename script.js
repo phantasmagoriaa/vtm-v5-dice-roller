@@ -4,6 +4,24 @@ const rollDie = () => { // Function to roll dice
     return Math.floor((Math.random() * 10) + 1);
 };
 
+const filterSuccesses = (array) => {
+    array.filter(number => {
+        return number >= 6 && number < 10;
+    });
+};
+
+const filterTens = (array) => {
+    array.filter(number => {
+        return number === 10;
+    });
+};
+
+const filterFailures = (array) => {
+    array.filter(number => {
+        return number === 1;
+    });
+};
+
 // Building the dice pools
 const basePool = 10;
 const hungerDice = 3;
@@ -41,21 +59,15 @@ const normalSuccesses = normalResults.filter(number => {
     return number >= 6 && number < 10;
 });
 
-const normalTens = normalResults.filter(number => {
-    return number === 10;
-});
+const normalSuccesses = filterSuccesses(normalResults);
 
-const hungerSuccesses = hungerResults.filter(number => {
-    return number >= 6 && number < 10;
-});
+const normalTens = filterTens(normalResults);
 
-const hungerFailures = hungerResults.filter(number => {
-    return number === 1;
-});
+const hungerSuccesses = filterSuccesses(hungerResults);
 
-const hungerTens = hungerResults.filter(number => {
-    return number === 10;
-});
+const hungerFailures = filterFailures(hungerResults);
+
+const hungerTens = filterTens(hungerResults);
 
 // debug block
 console.log(`Normal successes: ${normalSuccesses.toString()}`);
